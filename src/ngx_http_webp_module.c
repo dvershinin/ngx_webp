@@ -60,9 +60,11 @@ static ngx_int_t ngx_http_webp_handler(ngx_http_request_t *r)
     ngx_str_t  lpath;
     size_t    root;
     int   status;
-    pid_t parent_pid;
     pid_t child_pid;
+#if (NGX_DEBUG)
+    pid_t parent_pid;
     parent_pid = getpid();
+#endif
     child_pid = fork();
 
     ngx_open_file_info_t            of;
